@@ -1,0 +1,25 @@
+product-id: 42069
+comment: "Weltkarte – eigenes Tiptoi Projekt"
+welcome: [100]
+
+scripts:
+  100:
+    - "SAY europa.ogg"
+
+  101:
+    - "SAY asien.ogg"
+
+  102:
+    - "SAY afrika.ogg"
+
+  103:
+    - "SAY nordamerika.ogg"
+
+  104:
+    - "SAY südamerika.ogg"
+
+  105:
+    - "SAY australien.ogg"
+
+  106:
+    - "SAY antarktis.ogg"
