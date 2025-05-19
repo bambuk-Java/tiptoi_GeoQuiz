@@ -1,0 +1,65 @@
+general:
+  product-id: 1234
+  recording-dir: ./sounds
+
+states:
+  mode: start
+  quiz_question: none
+
+scripts:
+  100:                     # Start-Button
+    - set: mode = quiz
+    - play: start
+    - goto: ask_question
+
+  ask_question:
+    - random:
+        - set: quiz_question = brazil
+        - play: question_brazil
+        - goto: wait_for_answer
+        - set: quiz_question = egypt
+        - play: question_egypt
+        - goto: wait_for_answer
+        - set: quiz_question = germany
+        - play: question_germany
+        - goto: wait_for_answer
+
+  wait_for_answer:
+    # Diese OID-Codes müssen auf der Karte kleben
+
+  201:                      # Brasilien
+    - if: quiz_question == brazil
+      then:
+        - play: correct
+        - goto: ask_question
+      else:
+        - play: wrong_brazil
+        - goto: ask_question
+
+  202:                      # Ägypten
+    - if: quiz_question == egypt
+      then:
+        - play: correct
+        - goto: ask_question
+      else:
+        - play: wrong_egypt
+        - goto: ask_question
+
+  203:                      # Deutschland
+    - if: quiz_question == germany
+      then:
+        - play: correct
+        - goto: ask_question
+      else:
+        - play: wrong_germany
+        - goto: ask_question
+
+sounds:
+  start: start.wav
+  correct: correct.wav
+  question_brazil: where_is_brazil.wav
+  question_egypt: where_is_egypt.wav
+  question_germany: where_is_germany.wav
+  wrong_brazil: wrong_brazil.wav
+  wrong_egypt: wrong_egypt.wav
+  wrong_germany: wrong_germany.wav
